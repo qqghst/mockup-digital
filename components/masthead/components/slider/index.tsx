@@ -34,8 +34,8 @@ const Slider: React.FC = () => {
         // if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
         //     return;
         // }
-        const nextCardEl = nextCardRef.current;
-        const currentCardEl = currentCardRef.current;
+        let nextCardEl = nextCardRef.current;
+        let currentCardEl = currentCardRef.current;
 
         buttons.next?.addEventListener('click', () => swapCards('right'));
         buttons.prev?.addEventListener('click', () => swapCards('left'));
