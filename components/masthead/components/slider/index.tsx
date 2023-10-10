@@ -155,11 +155,15 @@ const Slider: React.FC = () => {
 
                 if (direction === 'right') {
                     console.log('info-right');
+                    console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
+                    console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
                     console.log('info-left');
+                    console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
+                    console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 }
             };
