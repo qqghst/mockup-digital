@@ -26,6 +26,7 @@ const Slider: React.FC = () => {
     const currentCardRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        alert(123)
         const buttons = buttonsRef.current;
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
