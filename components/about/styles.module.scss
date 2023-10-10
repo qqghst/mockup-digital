@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.about {
+    &__container {
+        background-color: $color-bg;
+        padding: 6.667vw 0; //128px 0
+
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.563vw; //30px
+    }
+}
+
+

@@ -1,0 +1,95 @@
+@import '../../../../styles/variables';
+
+.twenty_four {
+    &__container {
+        width: 33.438vw; //642px
+        height: 36.25vw; //696px
+        background-color: $color-bg-lighter;
+        border-radius: 28px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        div:nth-child(1) {
+            display: flex;
+            flex-direction: row;
+            align-items: end;
+            gap: 0.833vw; //16px
+
+            span:nth-child(1) {
+                font-family: 'HelveticaNeueCyrBold';
+                font-size: 10.417vw; //200px
+                line-height: 14.063vw; //270px
+                letter-spacing: 0em;
+                text-align: left;
+                color: $color-white;
+            }
+
+            span:nth-child(2) {
+                font-family: 'HelveticaNeueCyrMedium';
+                font-size: 32px;
+                font-weight: 550;
+                line-height: 43px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $color-white;
+                transform: translateY(-3.6vw);
+            }
+        }
+
+        p {
+            width: 23.646vw; //464px
+            color: $color-grey;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .twenty_four {
+        &__container {
+            width: 91.795vw; //358px
+            height: 127.179vw; //469px
+            background-color: $color-bg-lighter;
+            border-radius: 28px;
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    
+            div:nth-child(1) {
+                display: flex;
+                flex-direction: row;
+                align-items: end;
+                gap: 0.833vw; //16px
+    
+                span:nth-child(1) {
+                    font-family: 'HelveticaNeueCyrBold';
+                    font-size: 10.417vw; //200px
+                    line-height: 14.063vw; //270px
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: $color-white;
+                }
+    
+                span:nth-child(2) {
+                    font-family: 'HelveticaNeueCyrMedium';
+                    font-size: 32px;
+                    font-weight: 550;
+                    line-height: 43px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: $color-white;
+                    transform: translateY(-3.6vw);
+                }
+            }
+    
+            p {
+                width: 23.646vw; //464px
+                color: $color-grey;
+            }
+        }
+    }
+}

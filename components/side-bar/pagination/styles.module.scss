@@ -1,0 +1,59 @@
+@import '../../../styles/variables';
+
+.pagination {
+    &__container {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 388px;
+        margin-left: 5.052vw; //97px
+
+        .numbers {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 160px;
+            margin-top: 5.208vw; //100px
+
+            span {
+                display: inline-block;
+                transform: rotate(-90deg);
+                transform-origin: center center;
+                white-space: nowrap;
+
+                font-family: 'HelveticaNeueCyrMedium';
+                font-size: 0.677vw; //13px
+                line-height: 0.938vw; //18px
+                letter-spacing: 0.1em;
+                text-align: right;
+                color: $color-grey;
+
+                @media (max-width: 48em) {
+                    font-size: 0.729vw; //14px
+                    line-height: 0.72vw; //13.83px
+                }
+            }
+        }
+
+        .scrollDown {
+            display: flex;
+            flex-direction: column;
+            gap: 0.781vw; //15px
+            margin-bottom: 5.208vw; //100px;
+
+            label {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
+
+.active {
+    color: $color-red !important;
+}

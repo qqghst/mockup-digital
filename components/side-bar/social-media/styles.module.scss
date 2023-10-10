@@ -1,0 +1,12 @@
+.socialMedia {
+    &__container {
+        position: fixed;
+        top: 38%;
+        right: 1.406vw; //27px
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.833vw; //16px
+    }
+}

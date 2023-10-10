@@ -1,0 +1,17 @@
+.RequestBtn {
+	display: inline-flex;
+	color: #ffffff;
+	z-index: 100;
+
+	border: 1px solid rgba(78, 80, 81, 1);
+	border-radius: 52px;
+	display: flex;
+	flex-direction: row;
+
+	span {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;	
+	}
+}

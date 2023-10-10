@@ -1,0 +1,41 @@
+@import '../../../../styles/variables';
+
+.fifth__item {
+    width: 39.271vw; //754px
+    height: 19.583vw; //376px
+    background-color: $color-bg-lighter;
+    border-radius: 28px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+
+    p {
+        width: 40.958vw;
+        padding-left: 3.75vw; //72px
+        color: $color-white;
+    }
+
+    .image {
+        transform: translateY(4.167vw);
+        bottom: 0;
+    }
+}
+
+@media (max-width: 48em) {
+    .fifth__item {
+        width: 91.795vw; //358px
+        height: 98.974vw; //386px
+
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            width: 79.487vw; //310px
+        }
+    }
+}

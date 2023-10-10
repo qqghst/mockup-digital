@@ -1,0 +1,63 @@
+@import '../../../../styles/variables';
+
+.wrapper {
+    .button {
+        display: inline-flex;
+        align-items: center;
+        height: 60px;
+        width: 60px;
+        margin: 0 5px;
+        overflow: hidden;
+        background: #313538;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            transition: all 0.4s ease-in-out;
+            width: 200px;
+
+            & > span {
+                display: block;
+            }
+
+            & > .icon {
+                background: #ff0867;
+            }
+
+            & > .svg {
+                color: white;
+            }
+        }
+
+        .icon {
+            transition: all 0.4s ease-in-out;
+            display: inline-block;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            border-radius: 50px;
+            box-sizing: border-box;
+            line-height: 60px;
+            margin-left: -0px;
+
+            .svg {
+                transform: translateY(20px);
+                margin: 0 auto;
+                transition: all 0.3s ease-out;
+                font-size: 30px;
+                line-height: 60px;
+            }
+        }
+
+        span {
+            font-size: 0.833vw; //16px
+            line-height: 60px;
+            margin-left: 2.188vw; //42px
+            transition: all 0.3s ease-out;
+            color: #CBCECF;
+            display: none;
+            transition: all 0.4s ease-in-out;
+        }
+    }
+}

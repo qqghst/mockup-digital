@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+
+.infocenter {
+    &__container {
+        background-color: $color-white;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4.688vw; //90px
+        padding-bottom: 5.417vw; //104px
+
+        h2 {
+            margin-bottom: 80px;
+        }
+
+        div:nth-child(3) {
+            margin-top: 48px;
+        }
+    }
+}
+
+@media (max-width: 48em) {
+    .infocenter {
+        &__container {
+            position: relative;
+
+            div:nth-child(3) {
+                span {
+                    position: absolute;
+                    right: 1rem;
+                    /* top: 0vw; */
+                    transform: translateY(-32px);
+                }
+            }
+        }
+    }
+}

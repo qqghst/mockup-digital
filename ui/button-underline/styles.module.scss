@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.button {
+    // display: inline-flex;
+    font-family: 'HelveticaNeueCyrRegular';
+    text-decoration: underline;
+    text-transform: uppercase;
+    color: $color-white;
+    font-size: 0.833vw; //16px
+    font-weight: 500;
+    line-height: 1.125vw; //21.6px
+    letter-spacing: 3%;
+}
+
+@media (max-width: 48em) {
+    .button {
+        font-size: 3.077vw; //12px
+        line-height: 4.154vw; //16.2px
+    }
+}

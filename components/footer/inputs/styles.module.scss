@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .inputContainer {
+        float: left;
+        width: 27.33%;
+        position: relative;
+
+        .effect {
+            border: 0;
+            padding: 7px 100px;
+            border-bottom: 1px solid #2b3032;
+            position: relative;
+            &::placeholder {
+                font-size: 15px;
+                line-height: 18.75px;
+                color: $color-white;
+                font-weight: 300;
+            }
+        }
+
+        .phoneInput {
+            background-image: url('/footer/email.svg');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 40px;
+        }
+
+        .emailInput {
+            background-image: url('/footer/phone.svg');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 40px;
+        }
+
+        .effect ~ .focusBorder {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #ffffff;
+            transition: width 0.4s;
+        }
+
+        .effect:focus ~ .focusBorder {
+            width: 360%;
+            transition: width 0.4s;
+        }
+    }
+}

@@ -42,12 +42,6 @@ const Slider: React.FC = () => {
         function swapCards(direction: any) {
             swapCardsClass(direction);
             changeInfo(direction);
-            
-            currentCardEl?.classList.remove('next--card');
-
-
-            currentCardEl = nextCardEl;
-            nextCardEl = cardsContainerEl?.querySelector('.next--card');
 
             function swapCardsClass() {
                 if (direction === 'right') {
@@ -60,10 +54,11 @@ const Slider: React.FC = () => {
                     buttons.next.style.display = 'none';
                     buttons.prev.style.display = 'block';
                 } else if (direction === 'left') {
-                    currentCardEl?.classList.add('current--card');
-                    nextCardEl?.classList.add('next--card');
                     currentCardEl?.classList.remove('previous--card');
                     nextCardEl?.classList.remove('current--card');
+
+                    currentCardEl?.classList.add('current--card');
+                    nextCardEl?.classList.add('next--card');
 
                     buttons.next.style.display = 'block';
                     buttons.prev.style.display = 'none';
@@ -81,6 +76,7 @@ const Slider: React.FC = () => {
                     duration: 0.2,
                     opacity: 0.5,
                     pointerEvents: 'none',
+                    translateX: '0px',
                 })
                 .to(
                     currentInfoEl.querySelectorAll('.text'),
@@ -89,6 +85,7 @@ const Slider: React.FC = () => {
                         stagger: 0.1,
                         translateY: '-120px',
                         opacity: 0,
+                        translateX: '0px',
                     },
                     '-='
                 )
@@ -100,11 +97,13 @@ const Slider: React.FC = () => {
                     {
                         opacity: 0.5,
                         translateY: '40px',
+                        // translateX: '0px',
                     },
                     {
                         duration: 0.4,
                         stagger: 0.1,
                         translateY: '0px',
+                        // translateX: '900px',
                         opacity: 1,
                     }
                 )
