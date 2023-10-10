@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
+import IInfoProps from './interface';
 
-const Info = ({ card, index, currentIndex }) => {
-    const currentInfoRef = useRef(null);
-    const nextInfoRef = useRef(null);
-
+const Info: React.FC<IInfoProps> = ({ card, index, currentIndex }) => {
+    const currentInfoRef = useRef<HTMLDivElement | null>(null);
+    const nextInfoRef = useRef<HTMLDivElement | null>(null);
     return (
         <div
             className={`info ${

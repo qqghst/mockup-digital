@@ -1,9 +1,10 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import ICardProps from './interface';
 
-const Card = ({ card, index, currentIndex }) => {
-    const currentCardRef = useRef(null);
-    const nextCardRef = useRef(null);
+const Card: React.FC<ICardProps> = ({ card, index, currentIndex }) => {
+    const currentCardRef = useRef<HTMLDivElement | null>(null);
+    const nextCardRef = useRef<HTMLDivElement | null>(null);
     return (
         <div
             className={`card ${
@@ -17,7 +18,7 @@ const Card = ({ card, index, currentIndex }) => {
             <div className='card__image'>
                 <Image
                     src={card.image}
-                    alt={card.image}
+                    alt='sd'
                     width={1400 / 2}
                     height={1400 / 2}
                 />
