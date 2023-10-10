@@ -26,7 +26,7 @@ const Slider: React.FC = () => {
     const currentCardRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        alert(123)
+        // alert(123)
         const buttons = buttonsRef.current;
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
@@ -46,6 +46,7 @@ const Slider: React.FC = () => {
         };
 
         const swapCardsClass = (direction: 'left' | 'right') => {
+            alert(32)
             if (direction === 'right') {
                 console.log('button-right pressed');
                 // currentCardEl?.classList.remove('current--card');
