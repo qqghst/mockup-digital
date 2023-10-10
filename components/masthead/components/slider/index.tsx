@@ -30,9 +30,9 @@ const Slider: React.FC = () => {
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
 
-        if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
-            return;
-        }
+        // if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
+        //     return;
+        // }
         const nextCardEl = nextCardRef.current;
         const currentCardEl = currentCardRef.current;
 
