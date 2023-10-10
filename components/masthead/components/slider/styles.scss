@@ -1,12 +1,8 @@
 @import '../../../../styles/variables';
 
 :root {
-    --card-width: 200px;
-    --card-height: 300px;
-}
-
-.btn--left {
-    display: none;
+    --card-width: 15.625vw; //300px
+    --card-height: 26.042vw; //500px
 }
 
 .slider_container {
@@ -30,7 +26,7 @@
 
 .cardList {
     position: absolute;
-    width: calc(3 * var(--card-width));
+    // width: calc(3 * var(--card-width));
     height: auto;
 }
 .cardList__btn {
@@ -43,10 +39,11 @@
     z-index: 100;
 }
 .cardList__btn.btn--left {
-    left: -5%;
+    transform: translateX(-25vw); //480px
+    display: none;
 }
 .cardList__btn.btn--right {
-    right: -5%;
+    transform: translateX(25vw); //480px
 }
 .cardList .cards__wrapper {
     position: relative;
@@ -142,10 +139,8 @@
 }
 .info .text {
     position: relative;
-    font-family: 'Montserrat';
-    font-size: calc(var(--card-width) * var(--text-size-offset, 0.2));
     white-space: nowrap;
-    color: #fff;
+    color: $color-white;
     width: fit-content;
 }
 .info .name {
@@ -153,8 +148,17 @@
 }
 
 .info .description {
-    --text-size-offset: 0.065;
-    font-weight: 500;
+    text-transform: uppercase;
+    color: #cbcecf;
+}
+
+.info .description::before {
+    content: '';
+    display: inline-block;
+    border-top: 0.1rem solid #cbcecf;
+    width: 4rem;
+    margin-right: 24px;
+    transform: translateY(-0.3rem);
 }
 .info.current--info {
     opacity: 1;

@@ -14,7 +14,7 @@ const TrustUs: React.FC = () => {
                     alt='image'
                 />
                 <div>
-                    <Button href=''>Все клиенты</Button>
+                    <Button color='#FFFFFF' href='/'>Все клиенты</Button>
                 </div>
             </div>
         </div>

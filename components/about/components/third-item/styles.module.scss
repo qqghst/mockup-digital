@@ -11,8 +11,6 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    .image {
-    }
 
     div:nth-child(2) {
         display: flex;
@@ -39,7 +37,7 @@
         height: 221.795vw; //865px
         background-color: $color-bg-lighter;
         border-radius: 28px;
-    
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -49,13 +47,13 @@
             width: 363px;
             height: 325px;
         }
-    
+
         div:nth-child(2) {
             display: flex;
             flex-direction: column;
             align-items: start;
             justify-content: space-between;
-    
+
             h2 {
                 width: 477px;
             }

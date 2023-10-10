@@ -1,12 +1,12 @@
 const data = [
     {
-        image: '/masthead/mery-tverdosti.png',
-        name: 'МЕРЫ ТВЕРДОСТИ',
+        image: '/masthead/tverdomery.png',
+        name: 'Твердомеры',
         description: 'Как выбрать',
     },
     {
-        image: '/masthead/tverdomery.png',
-        name: 'Твердомеры',
+        image: '/masthead/mery-tverdosti.png',
+        name: 'МЕРЫ ТВЕРДОСТИ',
         description: 'Проверка подлинности',
     },
 ];

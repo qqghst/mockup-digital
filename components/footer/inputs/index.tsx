@@ -34,11 +34,11 @@ const Input: React.FC = () => {
                     placeholder='Заказать звонок'
                 />
                 <span className={styles.focusBorder}></span>
-                {errors.phoneNumber && (
+                {/* {errors.phoneNumber && (
                     <p className='absolute text-red-700'>
                         {errors.phoneNumber.message}
                     </p>
-                )}
+                )} */}
             </div>
             <div className={styles.inputContainer}>
                 <input
@@ -55,11 +55,11 @@ const Input: React.FC = () => {
                     placeholder='info@tverdomer.ru'
                 />
                 <span className={styles.focusBorder}></span>
-                {errors.email && (
+                {/* {errors.email && (
                     <p className='absolute text-red-700'>
                         {errors.email.message}
                     </p>
-                )}
+                )} */}
             </div>
         </form>
     );

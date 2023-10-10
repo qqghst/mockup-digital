@@ -14,8 +14,8 @@ const Info: React.FC<IInfoProps> = ({ card, index, currentIndex }) => {
                     ? (currentInfoRef.current = el)
                     : (nextInfoRef.current = el)
             }>
-            <h1 className='text name'>{card.name}</h1>
-            <h4 className='text location'>{card.description}</h4>
+            <h1 className='h1 text name'>{card.name}</h1>
+            <h4 className='px16 text description'>{card.description}</h4>
         </div>
     );
 };

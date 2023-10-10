@@ -11,6 +11,9 @@ import data from './data';
 const Slider: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
 
+    const cardsContainerRef = useRef<HTMLDivElement | null>(null);
+    const cardInfosContainerRef = useRef<HTMLDivElement | null>(null);
+
     const buttonsRef = useRef<{
         prev: HTMLButtonElement | null;
         next: HTMLButtonElement | null;
@@ -18,8 +21,6 @@ const Slider: React.FC = () => {
         prev: null,
         next: null,
     });
-    const cardsContainerRef = useRef<HTMLDivElement | null>(null);
-    const cardInfosContainerRef = useRef<HTMLDivElement | null>(null);
 
     const nextCardRef = useRef<HTMLDivElement | null>(null);
     const currentCardRef = useRef<HTMLDivElement | null>(null);
@@ -28,6 +29,10 @@ const Slider: React.FC = () => {
         const buttons = buttonsRef.current;
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
+
+        if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
+            return;
+        }
         const nextCardEl = nextCardRef.current;
         const currentCardEl = currentCardRef.current;
 
@@ -77,47 +82,49 @@ const Slider: React.FC = () => {
             let currentInfoEl =
                 cardInfosContainerEl?.querySelector('.current--info');
 
-            gsap.timeline()
-                .to([buttons.prev, buttons.next], {
-                    duration: 0.2,
-                    opacity: 0.5,
-                    pointerEvents: 'none',
-                    translateX: '0px',
-                })
-                .to(
-                    currentInfoEl.querySelectorAll('.text'),
-                    {
-                        duration: 0.4,
-                        stagger: 0.1,
-                        translateY: '-120px',
-                        opacity: 0,
-                        translateX: '0px',
-                    },
-                    '-='
-                )
-                .call(() => {
-                    swapInfosClass(direction);
-                })
-                .fromTo(
-                    nextInfoEl.querySelectorAll('.text'),
-                    {
+            if (currentInfoEl && nextInfoEl) {
+                gsap.timeline()
+                    .to([buttons.prev, buttons.next], {
+                        duration: 0.2,
                         opacity: 0.5,
-                        translateY: '40px',
+                        pointerEvents: 'none',
                         // translateX: '0px',
-                    },
-                    {
-                        duration: 0.4,
-                        stagger: 0.1,
-                        translateY: '0px',
-                        // translateX: '900px',
+                    })
+                    .to(
+                        currentInfoEl.querySelectorAll('.text'),
+                        {
+                            duration: 0.4,
+                            stagger: 0.1,
+                            translateY: '-120px',
+                            opacity: 0,
+                            // translateX: '0px',
+                        },
+                        '-='
+                    )
+                    .call(() => {
+                        swapInfosClass();
+                    })
+                    .fromTo(
+                        nextInfoEl.querySelectorAll('.text'),
+                        {
+                            opacity: 0.5,
+                            translateY: '40px',
+                            // translateX: '0px',
+                        },
+                        {
+                            duration: 0.4,
+                            stagger: 0.1,
+                            translateY: '0px',
+                            // translateX: '900px',
+                            opacity: 1,
+                        }
+                    )
+                    .to([buttons.prev, buttons.next], {
+                        duration: 0.2,
                         opacity: 1,
-                    }
-                )
-                .to([buttons.prev, buttons.next], {
-                    duration: 0.2,
-                    opacity: 1,
-                    pointerEvents: 'all',
-                });
+                        pointerEvents: 'all',
+                    });
+            }
 
             const swapInfosClass = () => {
                 currentInfoEl?.classList.remove('current--info');
@@ -176,46 +183,49 @@ const Slider: React.FC = () => {
 
         const waitForImages = () => {
             const images = Array.from(document.querySelectorAll('img'));
-        
+
             const totalImages = images.length;
             let loadedImages = 0;
             const loaderEl = document.querySelector('.loader span');
-        
+
             if (cardsContainerEl) {
                 gsap.set(cardsContainerEl.children, {
                     '--card-translateY-offset': '100vh',
                 });
             }
-        
-            const currentInfoEl = cardInfosContainerEl?.querySelector('.current--info');
+
+            const currentInfoEl =
+                cardInfosContainerEl?.querySelector('.current--info');
             if (currentInfoEl) {
                 gsap.set(currentInfoEl.querySelectorAll('.text'), {
                     translateY: '40px',
                     opacity: 0,
                 });
             }
-        
+
             if (buttons.prev && buttons.next) {
                 gsap.set([buttons.prev, buttons.next], {
                     pointerEvents: 'none',
                     opacity: '0',
                 });
             }
-        
+
             images.forEach((image) => {
                 imagesLoaded(image, (instance: any) => {
                     if (instance.isComplete) {
                         loadedImages++;
                         let loadProgress = loadedImages / totalImages;
-        
+
                         if (loaderEl) {
                             gsap.to(loaderEl, {
                                 duration: 1,
                                 scaleX: loadProgress,
-                                backgroundColor: `hsl(${loadProgress * 120}, 100%, 50%`,
+                                backgroundColor: `hsl(${
+                                    loadProgress * 120
+                                }, 100%, 50%`,
                             });
                         }
-        
+
                         if (totalImages == loadedImages) {
                             gsap.timeline()
                                 .to('.loading__wrapper', {
@@ -229,7 +239,6 @@ const Slider: React.FC = () => {
                 });
             });
         };
-        
 
         waitForImages();
     }, [currentIndex]);
@@ -242,7 +251,7 @@ const Slider: React.FC = () => {
                         className='cardList__btn btn btn--left'>
                         <div className='icon'>
                             <svg
-                                id='arrow-left'
+                                id='arrow-right'
                                 width='72'
                                 height='72'
                                 viewBox='0 0 72 72'
