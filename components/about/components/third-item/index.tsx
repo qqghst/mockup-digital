@@ -3,7 +3,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import img from '@/public/about/third-item.png';
 import Button from '@/ui/button-underline';
 
 const ThirdItem: React.FC = () => {
@@ -11,7 +10,7 @@ const ThirdItem: React.FC = () => {
         <div className={styles.third_item}>
             <Image
                 className={styles.image}
-                src={img}
+                src='/about/third-item.png'
                 alt='image'
                 width={1340 / 2}
                 height={1200 / 2}

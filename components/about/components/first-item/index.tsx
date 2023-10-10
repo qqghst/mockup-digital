@@ -3,7 +3,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import img from '@/public/about/first-item.png';
 
 const FirstItem: React.FC = () => {
     return (
@@ -53,12 +52,13 @@ const FirstItem: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className='right-side'>
+            <div className={styles.right_side}>
                 <Image
-                    src={img}
+                    className={styles.image}
+                    src='/about/first-item.png'
                     alt='image'
-                    width={window.innerWidth <= 768 ? 1200 / 2 : 668 / 2}
-                    height={window.innerWidth <= 768 ? 1200 / 2 : 696 / 2}
+                    width={1200 / 2}
+                    height={200 / 2}
                 />
             </div>
         </div>

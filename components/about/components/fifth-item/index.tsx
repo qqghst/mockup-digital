@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import image from '@/public/about/fifth.png';
 
 const FifthItem: React.FC = () => {
     return (
@@ -13,7 +12,7 @@ const FifthItem: React.FC = () => {
 
             <Image
                 className={styles.image}
-                src={image}
+                src='/about/fifth.png'
                 alt='image'
                 width={670}
                 height={682}

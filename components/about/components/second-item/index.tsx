@@ -1,9 +1,6 @@
-'use client';
-
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import img from '@/public/about/second-item.png';
 
 const SecondItem: React.FC = () => {
     return (
@@ -20,10 +17,10 @@ const SecondItem: React.FC = () => {
                 </div>
                 <Image
                     className={styles.image}
-                    src={img}
+                    src='/about/second-item.png'
                     alt='image'
-                    width={window.innerWidth <= 768 ? 662 / 2 : 1344 / 2}
-                    height={window.innerWidth <= 768 ? 632 / 2 : 1284 / 2}
+                    width={1344 / 2}
+                    height={1284 / 2}
                 />
                 <div>
                     <h4 className='h4'>
