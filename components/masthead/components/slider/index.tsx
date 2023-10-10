@@ -136,9 +136,11 @@ const Slider: React.FC = () => {
                 nextInfoEl?.classList.remove('next--info');
 
                 if (direction === 'right') {
+                    console.log('info-right')
                     currentInfoEl?.classList.add('next--info');
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
+                    console.log('info-left')
                     currentInfoEl?.classList.add('next--info');
                     nextInfoEl?.classList.add('current--info');
                 }
