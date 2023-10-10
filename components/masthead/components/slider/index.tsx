@@ -46,6 +46,7 @@ const Slider: React.FC = () => {
 
         const swapCardsClass = (direction: 'left' | 'right') => {
             if (direction === 'right') {
+                console.log('button-right pressed');
                 currentCardEl?.classList.remove('current--card');
                 nextCardEl?.classList.remove('next--card');
 
@@ -59,6 +60,7 @@ const Slider: React.FC = () => {
                     buttons.prev.style.display = 'block';
                 }
             } else if (direction === 'left') {
+                console.log('button-left pressed');
                 currentCardEl?.classList.remove('previous--card');
                 nextCardEl?.classList.remove('current--card');
 
@@ -227,8 +229,7 @@ const Slider: React.FC = () => {
                         }
 
                         if (totalImages == loadedImages) {
-                            gsap.timeline()
-                            .call(() => init());
+                            gsap.timeline().call(() => init());
                         }
                     }
                 });
@@ -236,7 +237,7 @@ const Slider: React.FC = () => {
         };
 
         waitForImages();
-    }, [currentIndex]);
+    }, []);
     return (
         <div className='slider_container'>
             <div className='app'>
