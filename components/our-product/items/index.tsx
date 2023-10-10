@@ -22,19 +22,19 @@ const OurProductItem: React.FC<IOurProductItemProps> = ({
                 />
                 <div>
                     <div>
-                        <p className='px14'>{availability}</p>
-                        <div>
+                        <div className={styles.price}>
                             <p className='px14'>{availability}</p>
-                            {oldPrice && (
+                            {oldPrice ? (
                                 <div>
                                     <span className='h4'>{oldPrice}</span>
                                     <span className='h4'>{price}</span>
                                 </div>
+                            ) : (
+                                <span className='h4'>{price}</span>
                             )}
-                            {!oldPrice && <span className='h4'>{price}</span>}
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.buttons}>
                         <button>
                             <Image
                                 src='/our-product/cart.svg'

@@ -41,6 +41,7 @@ const OurProduct: React.FC = () => {
             className={styles.ourProduct}
             id='ourproduct'>
             <div className={styles.ourProduct__container}>
+                <h2 className='h2'>Наша продукция</h2>
                 <div className='container'>
                     <Tabs>
                         <TabList
@@ -54,12 +55,13 @@ const OurProduct: React.FC = () => {
                             <Tab>Меры твердости</Tab>
                         </TabList>
 
-                        <TabPanel>
+                        <TabPanel style={{ marginTop: '56px' }}>
                             <Slider {...settings}>
                                 {data.map((item, index) => (
                                     <div
                                         className='relative'
-                                        key={index}>
+                                        key={index}
+                                        style={{ marginTop: '56px' }}>
                                         <OurProductItem
                                             name={item.name}
                                             img={item.img}
@@ -72,7 +74,7 @@ const OurProduct: React.FC = () => {
                             </Slider>
                         </TabPanel>
 
-                        <TabPanel>
+                        <TabPanel style={{ marginTop: '56px' }}>
                             <Slider {...settings}>
                                 {data.map((item, index) => (
                                     <div

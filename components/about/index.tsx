@@ -11,17 +11,20 @@ import SixthItem from './components/sixth-item';
 
 const About: React.FC = () => {
     return (
-        <div className={styles.about} id='about'>
+        <div
+            className={styles.about}
+            id='about'>
             <div className={styles.about__container}>
                 <FirstItem />
                 <SecondItem />
                 <ThirdItem />
-
-                <FourthItem />
-
-                <FifthItem />
-
-                <SixthItem />
+                <div className='flex flex-col gap-[6.154vw] md:flex-row md:gap-[1.563vw]'>
+                    <FourthItem />
+                    <div className='flex flex-col gap-[6.154vw] md:flex-col md:gap-[1.563vw]'>
+                        <FifthItem />
+                        <SixthItem />
+                    </div>
+                </div>
             </div>
         </div>
     );

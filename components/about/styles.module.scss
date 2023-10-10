@@ -14,4 +14,10 @@
     }
 }
 
-
+@media (max-width: 768px) {
+    .about {
+        &__container {
+            gap: 6.154vw; //24px
+        }
+    }
+}
