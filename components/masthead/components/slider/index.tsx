@@ -30,15 +30,11 @@ const Slider: React.FC = () => {
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
 
-        if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
-            return;
-        }
+        // if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
+        //     return;
+        // }
         const nextCardEl = nextCardRef.current;
         const currentCardEl = currentCardRef.current;
-
-        if(!nextCardEl || !currentCardEl) {
-            return;
-        }
 
         buttons.next?.addEventListener('click', () => swapCards('right'));
         buttons.prev?.addEventListener('click', () => swapCards('left'));
@@ -79,9 +75,12 @@ const Slider: React.FC = () => {
                 }
             }
         };
-        currentCardRef.current =
-            cardsContainerEl.querySelector('.current--card');
-        nextCardRef.current = cardsContainerEl.querySelector('.next--card');
+        if (cardsContainerEl) {
+            currentCardRef.current =
+                cardsContainerEl.querySelector('.current--card');
+
+            nextCardRef.current = cardsContainerEl.querySelector('.next--card');
+        }
 
         const changeInfo = (direction: 'left' | 'right') => {
             let nextInfoEl = cardInfosContainerEl?.querySelector('.next--info');
