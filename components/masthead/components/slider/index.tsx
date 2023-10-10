@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
 import { gsap } from 'gsap';
 import imagesLoaded from 'imagesloaded';
 import Image from 'next/image';
 import a from '@/public/masthead/mery-tverdosti.png';
 import b from '@/public/masthead/tverdomery.png';
+import Card from './items/card'; // Создайте компонент Card
+import Info from './items/info'; // Создайте компонент Info
 
 const Slider: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,23 +25,38 @@ const Slider: React.FC = () => {
             description: 'Проверка подлинности',
         },
     ];
+    const buttonsRef = useRef({
+        prev: null,
+        next: null,
+    });
+    const cardsContainerRef = useRef(null);
+    const cardInfosContainerRef = useRef(null);
+    const nextCardRef = useRef(null);
+    const currentCardRef = useRef(null);
 
     useEffect(() => {
-        const buttons = {
-            prev: document.querySelector('.btn--left'),
-            next: document.querySelector('.btn--right'),
-        };
+        const buttons = buttonsRef.current;
+        const cardsContainerEl = cardsContainerRef.current;
+        const cardInfosContainerEl = cardInfosContainerRef.current;
+        const nextCardEl = nextCardRef.current;
+        const currentCardEl = currentCardRef.current;
+        // const buttons = {
+        //     prev: document.querySelector('.btn--left'),
+        //     next: document.querySelector('.btn--right'),
+        // };
 
         buttons.next?.addEventListener('click', () => swapCards('right'));
         buttons.prev?.addEventListener('click', () => swapCards('left'));
 
-        let cardsContainerEl = document.querySelector('.cards__wrapper');
-        let cardInfosContainerEl = document.querySelector('.info__wrapper');
+        // let cardsContainerEl = document.querySelector('.cards__wrapper');
+        // let cardInfosContainerEl = document.querySelector('.info__wrapper');
 
-        let nextCardEl = cardsContainerEl?.querySelector('.next--card');
-        let currentCardEl = cardsContainerEl?.querySelector('.current--card');
+        // let nextCardEl = cardsContainerEl?.querySelector('.next--card');
+        // let currentCardEl = cardsContainerEl?.querySelector('.current--card');
 
         function swapCards(direction: any) {
+            const nextCardEl = nextCardRef.current;
+            const currentCardEl = currentCardRef.current;
             swapCardsClass(direction);
             changeInfo(direction);
 
@@ -220,7 +237,9 @@ const Slider: React.FC = () => {
         <div className='containerrr'>
             <div className='app'>
                 <div className='cardList'>
-                    <button className='cardList__btn btn btn--left'>
+                    <button
+                        ref={(el) => (buttonsRef.current.prev = el)}
+                        className='cardList__btn btn btn--left'>
                         <div className='icon'>
                             <svg
                                 id='arrow-left'
@@ -247,26 +266,22 @@ const Slider: React.FC = () => {
                         </div>
                     </button>
 
-                    <div className='cards__wrapper'>
+                    <div
+                        className='cards__wrapper'
+                        ref={cardsContainerRef}>
                         {cardData.map((card, index) => (
-                            <div
-                                className={`card ${
-                                    index === 0 ? 'current--card' : 'next--card'
-                                }`}
-                                key={index}>
-                                <div className='card__image'>
-                                    <Image
-                                        src={card.image}
-                                        alt='sd'
-                                        width={1400 / 2}
-                                        height={1400 / 2}
-                                    />
-                                </div>
-                            </div>
+                            <Card
+                                key={index}
+                                card={card}
+                                index={index}
+                                currentIndex={currentIndex}
+                            />
                         ))}
                     </div>
 
-                    <button className='cardList__btn btn btn--right'>
+                    <button
+                        ref={(el) => (buttonsRef.current.next = el)}
+                        className='cardList__btn btn btn--right'>
                         <div className='icon'>
                             <svg
                                 id='arrow-right'
@@ -295,18 +310,16 @@ const Slider: React.FC = () => {
                 </div>
 
                 <div className='infoList'>
-                    <div className='info__wrapper'>
+                    <div
+                        className='info__wrapper'
+                        ref={cardInfosContainerRef}>
                         {cardData.map((card, index) => (
-                            <div
-                                className={`info ${
-                                    index === 0 ? 'current--info' : 'next--info'
-                                }`}
-                                key={index}>
-                                <h1 className='text name'>{card.name}</h1>
-                                <h4 className='text location'>
-                                    {card.description}
-                                </h4>
-                            </div>
+                            <Info
+                                key={index}
+                                card={card}
+                                index={index}
+                                currentIndex={currentIndex}
+                            />
                         ))}
                     </div>
                 </div>
