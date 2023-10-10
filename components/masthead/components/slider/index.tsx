@@ -26,7 +26,6 @@ const Slider: React.FC = () => {
     const currentCardRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        // alert(123)
         const buttons = buttonsRef.current;
         const cardsContainerEl = cardsContainerRef.current;
         const cardInfosContainerEl = cardInfosContainerRef.current;
@@ -34,8 +33,8 @@ const Slider: React.FC = () => {
         // if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
         //     return;
         // }
-        // let nextCardEl = nextCardRef.current;
-        // let currentCardEl = currentCardRef.current;
+        const nextCardEl = nextCardRef.current;
+        const currentCardEl = currentCardRef.current;
 
         buttons.next?.addEventListener('click', () => swapCards('right'));
         buttons.prev?.addEventListener('click', () => swapCards('left'));
@@ -46,29 +45,18 @@ const Slider: React.FC = () => {
         };
 
         const swapCardsClass = (direction: 'left' | 'right') => {
-            let nextCardEl = cardsContainerEl?.querySelector('.next--card');
-            let currentCardEl = cardsContainerEl?.querySelector('.current--card');
-            // alert(32)
+            // let nextCardEl = cardsContainerEl?.querySelector('.next--card');
+            // let currentCardEl = cardsContainerEl?.querySelector('.current--card');
+            let nextCardEl = nextCardRef.current;
+            let currentCardEl = currentCardRef.current;
+            
             if (direction === 'right') {
-                // console.log('button-right pressed');
+                console.log('button-right pressed');
                 currentCardEl?.classList.remove('current--card');
                 nextCardEl?.classList.remove('next--card');
 
                 currentCardEl?.classList.add('previous--card');
                 nextCardEl?.classList.add('current--card');
-                // if (currentCardEl && nextCardEl) {
-                //     currentCardEl.classList.remove('current--card');
-                //     nextCardEl.classList.remove('next--card');
-                //     // setTimeout(() => {
-                //     //     console.log(currentCardEl);
-                //     // }, 3000);
-                //     // currentCardEl.style.display = 'none';
-                //     currentCardEl?.classList.add('previous--card');
-                //     nextCardEl.classList.add('current--card');
-                //     // setTimeout(() => {
-                //     //     console.log(currentCardEl);
-                //     // }, 100);
-                // }
 
                 if (buttons.next) {
                     buttons.next.style.display = 'none';
@@ -92,7 +80,6 @@ const Slider: React.FC = () => {
                 }
             }
         };
-
         if (cardsContainerEl) {
             currentCardRef.current =
                 cardsContainerEl.querySelector('.current--card');
@@ -154,16 +141,10 @@ const Slider: React.FC = () => {
                 nextInfoEl?.classList.remove('next--info');
 
                 if (direction === 'right') {
-                    // console.log('info-right');
-                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
-                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
-                    // console.log('info-left');
-                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
-                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 }
             };

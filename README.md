@@ -1,159 +1,204 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
 import { gsap } from 'gsap';
 import imagesLoaded from 'imagesloaded';
-import Image from 'next/image';
-import a from '@/public/masthead/mery-tverdosti.png';
-import b from '@/public/masthead/tverdomery.png';
+import Card from './items/card';
+import Info from './items/info';
+import data from './data';
 
 const Slider: React.FC = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-    const cardData = [
-        {
-            image: a,
-            name: 'МЕРЫ ТВЕРДОСТИ',
-            description: 'Как выбрать',
-        },
-        {
-            image: b,
-            name: 'Твердомеры',
-            description: 'Проверка подлинности',
-        },
-    ];
+    const cardsContainerRef = useRef<HTMLDivElement | null>(null);
+    const cardInfosContainerRef = useRef<HTMLDivElement | null>(null);
+
+    const buttonsRef = useRef<{
+        prev: HTMLButtonElement | null;
+        next: HTMLButtonElement | null;
+    }>({
+        prev: null,
+        next: null,
+    });
+
+    const nextCardRef = useRef<HTMLDivElement | null>(null);
+    const currentCardRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        const buttons = {
-            prev: document.querySelector('.btn--left'),
-            next: document.querySelector('.btn--right'),
-        };
+        // alert(123)
+        const buttons = buttonsRef.current;
+        const cardsContainerEl = cardsContainerRef.current;
+        const cardInfosContainerEl = cardInfosContainerRef.current;
+
+        // if (!buttons || !cardsContainerEl || !cardInfosContainerEl) {
+        //     return;
+        // }
+        // let nextCardEl = nextCardRef.current;
+        // let currentCardEl = currentCardRef.current;
 
         buttons.next?.addEventListener('click', () => swapCards('right'));
         buttons.prev?.addEventListener('click', () => swapCards('left'));
 
-        let cardsContainerEl = document.querySelector('.cards__wrapper');
-        let cardInfosContainerEl = document.querySelector('.info__wrapper');
-
-        let nextCardEl = cardsContainerEl?.querySelector('.next--card');
-        let currentCardEl = cardsContainerEl?.querySelector('.current--card');
-
-        function swapCards(direction: any) {
+        const swapCards = (direction: 'left' | 'right') => {
             swapCardsClass(direction);
             changeInfo(direction);
-            
-            currentCardEl?.classList.remove('next--card');
+        };
 
+        const swapCardsClass = (direction: 'left' | 'right') => {
+            let nextCardEl = cardsContainerEl?.querySelector('.next--card');
+            let currentCardEl = cardsContainerEl?.querySelector('.current--card');
+            // alert(32)
+            if (direction === 'right') {
+                // console.log('button-right pressed');
+                currentCardEl?.classList.remove('current--card');
+                nextCardEl?.classList.remove('next--card');
 
-            currentCardEl = nextCardEl;
-            nextCardEl = cardsContainerEl?.querySelector('.next--card');
+                currentCardEl?.classList.add('previous--card');
+                nextCardEl?.classList.add('current--card');
+                // if (currentCardEl && nextCardEl) {
+                //     currentCardEl.classList.remove('current--card');
+                //     nextCardEl.classList.remove('next--card');
+                //     // setTimeout(() => {
+                //     //     console.log(currentCardEl);
+                //     // }, 3000);
+                //     // currentCardEl.style.display = 'none';
+                //     currentCardEl?.classList.add('previous--card');
+                //     nextCardEl.classList.add('current--card');
+                //     // setTimeout(() => {
+                //     //     console.log(currentCardEl);
+                //     // }, 100);
+                // }
 
-            function swapCardsClass() {
-                if (direction === 'right') {
-                    currentCardEl?.classList.remove('current--card');
-                    nextCardEl?.classList.remove('next--card');
-
-                    currentCardEl?.classList.add('previous--card');
-                    nextCardEl?.classList.add('current--card');
-
+                if (buttons.next) {
                     buttons.next.style.display = 'none';
+                }
+                if (buttons.prev) {
                     buttons.prev.style.display = 'block';
-                } else if (direction === 'left') {
-                    currentCardEl?.classList.add('current--card');
-                    nextCardEl?.classList.add('next--card');
-                    currentCardEl?.classList.remove('previous--card');
-                    nextCardEl?.classList.remove('current--card');
+                }
+            } else if (direction === 'left') {
+                console.log('button-left pressed');
+                currentCardEl?.classList.remove('previous--card');
+                nextCardEl?.classList.remove('current--card');
 
+                currentCardEl?.classList.add('current--card');
+                nextCardEl?.classList.add('next--card');
+
+                if (buttons.next) {
                     buttons.next.style.display = 'block';
+                }
+                if (buttons.prev) {
                     buttons.prev.style.display = 'none';
                 }
             }
+        };
+
+        if (cardsContainerEl) {
+            currentCardRef.current =
+                cardsContainerEl.querySelector('.current--card');
+
+            nextCardRef.current = cardsContainerEl.querySelector('.next--card');
         }
 
-        function changeInfo(direction: any) {
+        const changeInfo = (direction: 'left' | 'right') => {
             let nextInfoEl = cardInfosContainerEl?.querySelector('.next--info');
             let currentInfoEl =
                 cardInfosContainerEl?.querySelector('.current--info');
 
-            gsap.timeline()
-                .to([buttons.prev, buttons.next], {
-                    duration: 0.2,
-                    opacity: 0.5,
-                    pointerEvents: 'none',
-                })
-                .to(
-                    currentInfoEl.querySelectorAll('.text'),
-                    {
-                        duration: 0.4,
-                        stagger: 0.1,
-                        translateY: '-120px',
-                        opacity: 0,
-                    },
-                    '-='
-                )
-                .call(() => {
-                    swapInfosClass(direction);
-                })
-                .fromTo(
-                    nextInfoEl.querySelectorAll('.text'),
-                    {
+            if (currentInfoEl && nextInfoEl) {
+                gsap.timeline()
+                    .to([buttons.prev, buttons.next], {
+                        duration: 0.2,
                         opacity: 0.5,
-                        translateY: '40px',
-                    },
-                    {
-                        duration: 0.4,
-                        stagger: 0.1,
-                        translateY: '0px',
+                        pointerEvents: 'none',
+                        // translateX: '0px',
+                    })
+                    .to(
+                        currentInfoEl.querySelectorAll('.text'),
+                        {
+                            duration: 0.4,
+                            stagger: 0.1,
+                            translateY: '-120px',
+                            opacity: 0,
+                            // translateX: '0px',
+                        },
+                        '-='
+                    )
+                    .call(() => {
+                        swapInfosClass();
+                    })
+                    .fromTo(
+                        nextInfoEl.querySelectorAll('.text'),
+                        {
+                            opacity: 0.5,
+                            translateY: '40px',
+                            // translateX: '0px',
+                        },
+                        {
+                            duration: 0.4,
+                            stagger: 0.1,
+                            translateY: '0px',
+                            // translateX: '900px',
+                            opacity: 1,
+                        }
+                    )
+                    .to([buttons.prev, buttons.next], {
+                        duration: 0.2,
                         opacity: 1,
-                    }
-                )
-                .to([buttons.prev, buttons.next], {
-                    duration: 0.2,
-                    opacity: 1,
-                    pointerEvents: 'all',
-                });
+                        pointerEvents: 'all',
+                    });
+            }
 
-            function swapInfosClass() {
+            const swapInfosClass = () => {
                 currentInfoEl?.classList.remove('current--info');
                 nextInfoEl?.classList.remove('next--info');
 
                 if (direction === 'right') {
+                    // console.log('info-right');
+                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
+                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
+                    // console.log('info-left');
+                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
+                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 }
-            }
-        }
+            };
+        };
 
-        function init() {
+        const init = () => {
             let tl = gsap.timeline();
 
-            tl.to(cardsContainerEl.children, {
-                delay: 0.15,
-                duration: 0.5,
-                stagger: {
-                    ease: 'power4.inOut',
-                    from: 'right',
-                    amount: 0.1,
-                },
-                '--card-translateY-offset': '0%',
-            })
-                .to(
-                    cardInfosContainerEl
-                        .querySelector('.current--info')
-                        .querySelectorAll('.text'),
-                    {
-                        delay: 0.5,
-                        duration: 0.4,
-                        stagger: 0.1,
-                        opacity: 1,
-                        translateY: 0,
-                    }
-                )
-                .to(
+            if (cardsContainerEl) {
+                tl.to(cardsContainerEl.children, {
+                    delay: 0.15,
+                    duration: 0.5,
+                    stagger: {
+                        ease: 'power4.inOut',
+                        from: 'end',
+                        amount: 0.1,
+                    },
+                    '--card-translateY-offset': '0%',
+                });
+            }
+
+            const currentInfoEl =
+                cardInfosContainerEl?.querySelector('.current--info');
+            if (currentInfoEl) {
+                tl.to(currentInfoEl.querySelectorAll('.text'), {
+                    delay: 0.5,
+                    duration: 0.4,
+                    stagger: 0.1,
+                    opacity: 1,
+                    translateY: 0,
+                });
+            }
+
+            if (buttons.prev && buttons.next) {
+                tl.to(
                     [buttons.prev, buttons.next],
                     {
                         duration: 0.4,
@@ -162,30 +207,37 @@ const Slider: React.FC = () => {
                     },
                     '-=0.4'
                 );
-        }
+            }
+        };
 
         const waitForImages = () => {
-            const images = [...document.querySelectorAll('img')];
+            const images = Array.from(document.querySelectorAll('img'));
+
             const totalImages = images.length;
             let loadedImages = 0;
             const loaderEl = document.querySelector('.loader span');
 
-            gsap.set(cardsContainerEl.children, {
-                '--card-translateY-offset': '100vh',
-            });
-            gsap.set(
-                cardInfosContainerEl
-                    .querySelector('.current--info')
-                    .querySelectorAll('.text'),
-                {
+            if (cardsContainerEl) {
+                gsap.set(cardsContainerEl.children, {
+                    '--card-translateY-offset': '100vh',
+                });
+            }
+
+            const currentInfoEl =
+                cardInfosContainerEl?.querySelector('.current--info');
+            if (currentInfoEl) {
+                gsap.set(currentInfoEl.querySelectorAll('.text'), {
                     translateY: '40px',
                     opacity: 0,
-                }
-            );
-            gsap.set([buttons.prev, buttons.next], {
-                pointerEvents: 'none',
-                opacity: '0',
-            });
+                });
+            }
+
+            if (buttons.prev && buttons.next) {
+                gsap.set([buttons.prev, buttons.next], {
+                    pointerEvents: 'none',
+                    opacity: '0',
+                });
+            }
 
             images.forEach((image) => {
                 imagesLoaded(image, (instance: any) => {
@@ -193,22 +245,18 @@ const Slider: React.FC = () => {
                         loadedImages++;
                         let loadProgress = loadedImages / totalImages;
 
-                        gsap.to(loaderEl, {
-                            duration: 1,
-                            scaleX: loadProgress,
-                            backgroundColor: `hsl(${
-                                loadProgress * 120
-                            }, 100%, 50%`,
-                        });
+                        if (loaderEl) {
+                            gsap.to(loaderEl, {
+                                duration: 1,
+                                scaleX: loadProgress,
+                                backgroundColor: `hsl(${
+                                    loadProgress * 120
+                                }, 100%, 50%`,
+                            });
+                        }
 
                         if (totalImages == loadedImages) {
-                            gsap.timeline()
-                                .to('.loading__wrapper', {
-                                    duration: 0.8,
-                                    opacity: 0,
-                                    pointerEvents: 'none',
-                                })
-                                .call(() => init());
+                            gsap.timeline().call(() => init());
                         }
                     }
                 });
@@ -218,13 +266,15 @@ const Slider: React.FC = () => {
         waitForImages();
     }, []);
     return (
-        <div className='containerrr'>
+        <div className='slider_container'>
             <div className='app'>
                 <div className='cardList'>
-                    <button className='cardList__btn btn btn--left'>
+                    <button
+                        ref={(el) => (buttonsRef.current.prev = el)}
+                        className='cardList__btn btn btn--left'>
                         <div className='icon'>
                             <svg
-                                id='arrow-left'
+                                id='arrow-right'
                                 width='72'
                                 height='72'
                                 viewBox='0 0 72 72'
@@ -248,26 +298,22 @@ const Slider: React.FC = () => {
                         </div>
                     </button>
 
-                    <div className='cards__wrapper'>
-                        {cardData.map((card, index) => (
-                            <div
-                                className={`card ${
-                                    index === 0 ? 'current--card' : 'next--card'
-                                }`}
-                                key={index}>
-                                <div className='card__image'>
-                                    <Image
-                                        src={card.image}
-                                        alt='sd'
-                                        width={1400 / 2}
-                                        height={1400 / 2}
-                                    />
-                                </div>
-                            </div>
+                    <div
+                        className='cards__wrapper'
+                        ref={cardsContainerRef}>
+                        {data.map((item, index) => (
+                            <Card
+                                key={index}
+                                card={item}
+                                index={index}
+                                currentIndex={currentIndex}
+                            />
                         ))}
                     </div>
 
-                    <button className='cardList__btn btn btn--right'>
+                    <button
+                        ref={(el) => (buttonsRef.current.next = el)}
+                        className='cardList__btn btn btn--right'>
                         <div className='icon'>
                             <svg
                                 id='arrow-right'
@@ -296,18 +342,16 @@ const Slider: React.FC = () => {
                 </div>
 
                 <div className='infoList'>
-                    <div className='info__wrapper'>
-                        {cardData.map((card, index) => (
-                            <div
-                                className={`info ${
-                                    index === 0 ? 'current--info' : 'next--info'
-                                }`}
-                                key={index}>
-                                <h1 className='text name'>{card.name}</h1>
-                                <h4 className='text location'>
-                                    {card.description}
-                                </h4>
-                            </div>
+                    <div
+                        className='info__wrapper'
+                        ref={cardInfosContainerRef}>
+                        {data.map((item, index) => (
+                            <Info
+                                key={index}
+                                card={item}
+                                index={index}
+                                currentIndex={currentIndex}
+                            />
                         ))}
                     </div>
                 </div>
