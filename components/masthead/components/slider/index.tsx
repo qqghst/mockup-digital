@@ -50,25 +50,25 @@ const Slider: React.FC = () => {
             let currentCardEl = cardsContainerEl?.querySelector('.current--card');
             // alert(32)
             if (direction === 'right') {
-                console.log('button-right pressed');
-                // currentCardEl?.classList.remove('current--card');
-                // nextCardEl?.classList.remove('next--card');
+                // console.log('button-right pressed');
+                currentCardEl?.classList.remove('current--card');
+                nextCardEl?.classList.remove('next--card');
 
-                // currentCardEl?.classList.add('previous--card');
-                // nextCardEl?.classList.add('current--card');
-                if (currentCardEl && nextCardEl) {
-                    currentCardEl.classList.remove('current--card');
-                    nextCardEl.classList.remove('next--card');
-                    setTimeout(() => {
-                        console.log(currentCardEl);
-                    }, 3000);
-                    // currentCardEl.style.display = 'none';
-                    currentCardEl?.classList.add('previous--card');
-                    nextCardEl.classList.add('current--card');
-                    setTimeout(() => {
-                        console.log(currentCardEl);
-                    }, 100);
-                }
+                currentCardEl?.classList.add('previous--card');
+                nextCardEl?.classList.add('current--card');
+                // if (currentCardEl && nextCardEl) {
+                //     currentCardEl.classList.remove('current--card');
+                //     nextCardEl.classList.remove('next--card');
+                //     // setTimeout(() => {
+                //     //     console.log(currentCardEl);
+                //     // }, 3000);
+                //     // currentCardEl.style.display = 'none';
+                //     currentCardEl?.classList.add('previous--card');
+                //     nextCardEl.classList.add('current--card');
+                //     // setTimeout(() => {
+                //     //     console.log(currentCardEl);
+                //     // }, 100);
+                // }
 
                 if (buttons.next) {
                     buttons.next.style.display = 'none';
@@ -154,16 +154,16 @@ const Slider: React.FC = () => {
                 nextInfoEl?.classList.remove('next--info');
 
                 if (direction === 'right') {
-                    console.log('info-right');
-                    console.log(currentInfoEl)
+                    // console.log('info-right');
+                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
-                    console.log(currentInfoEl)
+                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
-                    console.log('info-left');
-                    console.log(currentInfoEl)
+                    // console.log('info-left');
+                    // console.log(currentInfoEl)
                     currentInfoEl?.classList.add('next--info');
-                    console.log(currentInfoEl)
+                    // console.log(currentInfoEl)
                     nextInfoEl?.classList.add('current--info');
                 }
             };
