@@ -47,11 +47,17 @@ const Slider: React.FC = () => {
         const swapCardsClass = (direction: 'left' | 'right') => {
             if (direction === 'right') {
                 console.log('button-right pressed');
-                currentCardEl?.classList.remove('current--card');
-                nextCardEl?.classList.remove('next--card');
+                // currentCardEl?.classList.remove('current--card');
+                // nextCardEl?.classList.remove('next--card');
 
-                currentCardEl?.classList.add('previous--card');
-                nextCardEl?.classList.add('current--card');
+                // currentCardEl?.classList.add('previous--card');
+                // nextCardEl?.classList.add('current--card');
+                if (currentCardEl && nextCardEl) {
+                    currentCardEl.classList.remove('current--card');
+                    nextCardEl.classList.remove('next--card');
+                    currentCardEl.style.display = 'none';
+                    nextCardEl.classList.add('current--card');
+                }
 
                 if (buttons.next) {
                     buttons.next.style.display = 'none';
