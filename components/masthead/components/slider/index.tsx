@@ -55,8 +55,10 @@ const Slider: React.FC = () => {
                 if (currentCardEl && nextCardEl) {
                     currentCardEl.classList.remove('current--card');
                     nextCardEl.classList.remove('next--card');
+                    console.log(currentCardEl)
                     currentCardEl.style.display = 'none';
                     nextCardEl.classList.add('current--card');
+                    console.log(currentCardEl)
                 }
 
                 if (buttons.next) {
