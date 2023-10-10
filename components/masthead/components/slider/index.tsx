@@ -46,7 +46,7 @@ const Slider: React.FC = () => {
         };
 
         const swapCardsClass = (direction: 'left' | 'right') => {
-            alert(32)
+            // alert(32)
             if (direction === 'right') {
                 console.log('button-right pressed');
                 // currentCardEl?.classList.remove('current--card');
@@ -57,10 +57,14 @@ const Slider: React.FC = () => {
                 if (currentCardEl && nextCardEl) {
                     currentCardEl.classList.remove('current--card');
                     nextCardEl.classList.remove('next--card');
-                    console.log(currentCardEl)
+                    setTimeout(() => {
+                        console.log(currentCardEl);
+                    }, 3000);
                     currentCardEl.style.display = 'none';
                     nextCardEl.classList.add('current--card');
-                    console.log(currentCardEl)
+                    setTimeout(() => {
+                        console.log(currentCardEl);
+                    }, 100);
                 }
 
                 if (buttons.next) {
@@ -85,6 +89,7 @@ const Slider: React.FC = () => {
                 }
             }
         };
+
         if (cardsContainerEl) {
             currentCardRef.current =
                 cardsContainerEl.querySelector('.current--card');
@@ -146,11 +151,11 @@ const Slider: React.FC = () => {
                 nextInfoEl?.classList.remove('next--info');
 
                 if (direction === 'right') {
-                    console.log('info-right')
+                    console.log('info-right');
                     currentInfoEl?.classList.add('next--info');
                     nextInfoEl?.classList.add('current--info');
                 } else if (direction === 'left') {
-                    console.log('info-left')
+                    console.log('info-left');
                     currentInfoEl?.classList.add('next--info');
                     nextInfoEl?.classList.add('current--info');
                 }
