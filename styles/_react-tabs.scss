@@ -4,12 +4,10 @@
     color: black;
     border-radius: 5px 5px 0 0;
     // border-bottom: 1px solid cyan !important;
-
-   
 }
 
 .react-tabs__tab {
-    color: #7F8589;
+    color: #7f8589;
     display: inline-block;
     border: 1px solid transparent;
     border-bottom: none;
@@ -58,3 +56,13 @@
         background: transparent !important;
     }
 }
+
+// .react-tabs__tab-list {
+//     border-bottom: 1px solid #aaa;
+
+//     margin: 0 auto;
+//     // transform: translateX(-9.896vw);
+//     right: -9.896vw;
+//     width: 100vw;
+//     position: relative;
+// }

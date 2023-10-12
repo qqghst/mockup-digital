@@ -25,7 +25,7 @@ const OurProduction: React.FC = () => {
                 onClick={function (
                     event: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error('ошибка');
                 }}
             />
         ),
@@ -34,7 +34,7 @@ const OurProduction: React.FC = () => {
                 onClick={function (
                     event: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ): void {
-                    throw new Error('Function not implemented.');
+                    throw new Error('ошибка');
                 }}
             />
         ),
@@ -44,7 +44,7 @@ const OurProduction: React.FC = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    initialSlide: 2,
+                    initialSlide:0,
                 },
             },
         ],

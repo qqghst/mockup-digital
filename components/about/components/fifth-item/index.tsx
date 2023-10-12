@@ -10,13 +10,15 @@ const FifthItem: React.FC = () => {
                 высокоскоростной USB порт и специальное программное обеспечение.
             </p>
 
-            <Image
+            <div className={styles.image} />
+
+            {/* <Image
                 className={styles.image}
-                src='/about/fifth.png'
+                src=''
                 alt='image'
                 width={670}
                 height={682}
-            />
+            /> */}
         </div>
     );
 };

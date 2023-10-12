@@ -13,8 +13,8 @@ const SolidArguments: React.FC = () => {
             <div className={styles.solid_arguments__container}>
                 <h2 className='h2'>Твердые аргументы</h2>
                 <div>
-                    <TrustUs />
                     <TwentyFour />
+                    <TrustUs />
                 </div>
                 <div>
                     <SmallRectangle

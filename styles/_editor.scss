@@ -157,3 +157,19 @@
     text-align: left;
     color: $color-white;
 }
+
+//px16-about second item
+.px16-about {
+    font-family: 'HelveticaNeueCyrRegular';
+    font-size: 0.833vw; //16px
+    // font-weight: 550;
+    line-height: 1.51vw; //29px
+    letter-spacing: 0em;
+    text-align: left;
+    color: $color-grey2;
+
+    @media (max-width: 768px) {
+        font-size: 3.077vw; //12px
+        line-height: 5.538vw; //21.6px
+    }
+}

@@ -7,7 +7,7 @@ const SixthItem: React.FC = () => {
     return (
         <div className={styles.sixth__item}>
             <div className={styles.button}>
-                <Button color='#E14603' href=''>подробнее</Button>
+                <Button color='#CBCECF' href=''>подробнее</Button>
             </div>
             <div>
                 <span>3</span>

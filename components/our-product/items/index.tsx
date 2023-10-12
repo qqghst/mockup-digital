@@ -3,6 +3,10 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import IOurProductItemProps from './interface';
 
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const OurProductItem: React.FC<IOurProductItemProps> = ({
     img,
     name,
@@ -10,16 +14,65 @@ const OurProductItem: React.FC<IOurProductItemProps> = ({
     oldPrice,
     price,
 }) => {
+    const settings = {
+        infinite: true,
+
+        centerMode: true,
+        centerPadding: '0',
+        speed: 900,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 0,
+                },
+            },
+        ],
+    };
+
+    const array2 = [
+        { name2: '1', surname: '2' },
+        { name2: '3', surname: '4' },
+        { name2: '5', surname: '6' },
+    ];
+
+    const data = [
+        {
+            img: '/our-product/product5.png',
+        },
+        {
+            img: '/our-product/product5.png',
+        },
+        {
+            img: '/our-product/product5.png',
+        },
+    ];
+
     return (
         <div className={styles.ourProduct_item}>
             <div className={styles.ourProduct_item__container}>
                 <p className='h5'>{name}</p>
-                <Image
-                    src={img}
-                    alt='product'
-                    width={740 / 2}
-                    height={676 / 2}
-                />
+                <div className='container'>
+                    <Slider {...settings}>
+                        {data.map((item, index) => (
+                            <div
+                                className='relative'
+                                key={index}>
+                                <Image
+                                    src={item.img}
+                                    alt='product'
+                                    width={740 / 2}
+                                    height={676 / 2}
+                                />
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
                 <div>
                     <div>
                         <div className={styles.price}>

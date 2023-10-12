@@ -9,9 +9,11 @@ import Button from '@/ui/button-underline';
 
 const Masthead: React.FC = () => {
     return (
-        <div className={styles.masthead} id='masthead'>
+        <div
+            className={styles.masthead}
+            id='masthead'>
             <div className={styles.masthead__container}>
-                <div className={styles.suka}>
+                <div className={styles.top}>
                     <h3 className='h3'>
                         Точность без
                         <br />
@@ -24,7 +26,7 @@ const Masthead: React.FC = () => {
                     <Slider />
                 </div>
 
-                <div className={styles.pidar}>
+                <div className={styles.bottom}>
                     <Button
                         href='/'
                         color='#FFFFFF'>
@@ -37,8 +39,10 @@ const Masthead: React.FC = () => {
                             width={130 / 2}
                             height={128 / 2}
                         />
-                        <p>госреестр</p>
-                        <p>средств изменений</p>
+                        <div>
+                            <p>госреестр</p>
+                            <p>средств изменений</p>
+                        </div>
                     </div>
                 </div>
             </div>

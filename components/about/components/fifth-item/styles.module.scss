@@ -1,26 +1,33 @@
 @import '../../../../styles/variables';
 
-.fifth__item {
-    width: 39.271vw; //754px
-    height: 19.583vw; //376px
-    background-color: $color-bg-lighter;
-    border-radius: 28px;
+@media (min-width: 768px) {
+    .fifth__item {
+        width: 39.271vw; //754px
+        height: 19.583vw; //376px
+        background-color: $color-bg-lighter;
+        border-radius: 28px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
 
-    p {
-        width: 40.958vw;
-        padding-left: 3.75vw; //72px
-        color: $color-white;
-    }
+        p {
+            width: 40.958vw;
+            padding-left: 3.75vw; //72px
+            color: $color-white;
+        }
 
-    .image {
-        transform: translateY(4.167vw);
-        bottom: 0;
+        .image {
+            transform: translate(0vw, 14.167vw);
+            bottom: 0;
+            background-image: url('../../../../public/about/fifth.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 52.083vw; //100px
+            height: 680px;
+        }
     }
 }
 
@@ -28,14 +35,28 @@
     .fifth__item {
         width: 91.795vw; //358px
         height: 98.974vw; //386px
+        background-color: $color-bg-lighter;
+        border-radius: 28px;
 
         display: flex;
         flex-direction: column-reverse;
         justify-content: space-between;
         align-items: center;
+        overflow: hidden;
 
         p {
-            width: 79.487vw; //310px
+            width: 75.385vw; //310px
+            color: $color-white;
+            transform: translateY(-6.154vw); //-24px
+        }
+
+        .image {
+            background-image: url('../../../../public/about/fifth-mobile.png');
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 100vw; 
+            height: 680px;
         }
     }
 }

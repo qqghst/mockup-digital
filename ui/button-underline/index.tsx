@@ -12,7 +12,6 @@ const Button: React.FC<IButtonProps> = ({
 }) => {
     const buttonStyle = {
         color: color,
-        
     };
 
     return (

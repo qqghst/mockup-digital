@@ -1,32 +1,39 @@
 @import '../../../../styles/variables';
 
-.third_item {
-    width: 68.438vw; //1314px
-    height: 31.25vw; //600px
-    background-color: $color-bg-lighter;
-    border-radius: 28px;
+@media (min-width: 769px) {
+    .third_item {
+        width: 68.438vw; //1314px
+        height: 31.25vw; //600px
+        background-color: $color-bg-lighter;
+        border-radius: 28px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-
-    div:nth-child(2) {
         display: flex;
-        flex-direction: column;
-        align-items: start;
+        flex-direction: row;
         justify-content: space-between;
-        color: $color-white;
-        padding-right: 3.75vw; //72px
+        align-items: center;
+        overflow: hidden;
 
-        h2 {
-            width: 477px;
-        }
-        p {
-            width: 485px;
-            padding-top: 48px;
-            padding-bottom: 148px;
+        div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+            padding-right: 3.75vw; //72px
+
+            h2 {
+                color: $color-white;
+                width: 24.844vw; //477px
+            }
+            p {
+                color: $color-grey;
+                width: 25.26vw; //485px
+                padding-top: 2.5vw; //48px
+                padding-bottom: 7.708vw; //148px
+
+                span {
+                    color: $color-white;
+                }
+            }
         }
     }
 }
@@ -34,18 +41,19 @@
 @media (max-width: 48em) {
     .third_item {
         width: 91.795vw; //358px
-        height: 221.795vw; //865px
+        height: 160vw; //624px
         background-color: $color-bg-lighter;
         border-radius: 28px;
 
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
+        overflow: hidden;
+        gap: 7.692vw; //30px
 
         .image {
-            width: 363px;
-            height: 325px;
+            width: 93.077vw; //363px
+            height: 83.333vw; //325px
         }
 
         div:nth-child(2) {
@@ -55,12 +63,13 @@
             justify-content: space-between;
 
             h2 {
-                width: 477px;
+                width: 58.974vw; //230px
+                margin-bottom: 6.154vw; //24px
             }
             p {
-                width: 485px;
-                padding-top: 48px;
-                padding-bottom: 148px;
+                width: 79.487vw;
+                z-index: 100;
+                margin-bottom: 8.205vw; //32px
             }
         }
     }

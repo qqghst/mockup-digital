@@ -6,6 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import OurProductItem from './items';
 import data from './data';
+import Image from 'next/image';
 
 import NextArrow from '@/ui/arrows/nextArrow';
 import PrevArrow from '@/ui/arrows/prevArrow';
@@ -23,7 +24,11 @@ const OurProduct: React.FC = () => {
         slidesToShow: 3,
         slidesToScroll: 3,
         initialSlide: 0,
-        nextArrow: <NextArrow />,
+        nextArrow: (
+            <div style={{}}>
+                <NextArrow />
+            </div>
+        ),
         prevArrow: <PrevArrow />,
         responsive: [
             {
@@ -42,6 +47,15 @@ const OurProduct: React.FC = () => {
             id='ourproduct'>
             <div className={styles.ourProduct__container}>
                 <h2 className='h2'>Наша продукция</h2>
+                <div className={styles.catalog}>
+                    <Image
+                        src='/our-product/catalog.svg'
+                        alt='catalog'
+                        width={40 / 2}
+                        height={40 / 2}
+                    />
+                    <span>В каталог</span>
+                </div>
                 <div className='container'>
                     <Tabs>
                         <TabList
@@ -49,7 +63,7 @@ const OurProduct: React.FC = () => {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 margin: '0 auto',
-                                paddingBottom: '56px',
+                                paddingBottom: '4px',
                             }}>
                             <Tab>Твердомеры</Tab>
                             <Tab>Меры твердости</Tab>

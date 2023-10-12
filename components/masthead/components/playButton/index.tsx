@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import styles from './styles.module.scss';
 
 const PlayButton = () => {
@@ -11,7 +12,7 @@ const PlayButton = () => {
             className={styles.lol}
             key={i}
             style={{
-                transform: `rotate(${i * 10}deg)`,
+                transform: `rotate(${i * 14}deg)`,
                 color:
                     char === 'В' ||
                     char === 'И' ||
@@ -27,7 +28,10 @@ const PlayButton = () => {
 
     return (
         <div className={styles.circle}>
-            <div className={styles.logo}></div>
+            <Link
+                href='https://www.quick-tools.net/24px-to-vw-390vp'
+                className={styles.logo}></Link>
+
             <div className={styles.text}>
                 <p>{transformedText}</p>
             </div>

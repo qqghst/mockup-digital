@@ -1,9 +1,9 @@
+@import '../../../../styles/variables';
+
 .circle {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    // background: #ccc;
+    width: 6.25vw; //120px
+    height: 6.25vw; //120px
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,12 +11,12 @@
 
 .logo {
     position: absolute;
-    width: 18.71px;
-    height: 21px;
+    width: 0.974vw; //18.71px
+    height: 1.094vw; //21px
     background: url('../../../../public/masthead/play.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 50%;
+    z-index: 1;
 }
 
 .text {
@@ -24,7 +24,7 @@
     width: 100%;
     height: 100%;
     animation: rotateText 10s linear infinite;
-    color: white;
+    color: $color-white;
 }
 
 @keyframes rotateText {
@@ -40,26 +40,14 @@
 .text span {
     position: absolute;
     left: 50%;
-    font-size: 1.2em;
-    transform-origin: 0 100px;
+    font-size: 0.677vw; //13px
+    transform-origin: 0 3.021vw; //58px
 }
 
-.letter-0 {
-    color: red; 
-}
-
-.letter-1 {
-    color: red; 
-}
-
-.letter-2 {
-    color: red; 
-}
-
-.letter-3 {
-    color: red; 
-}
-
+.letter-0,
+.letter-1,
+.letter-2,
+.letter-3,
 .letter-4 {
-    color: red; 
+    color: $color-red;
 }

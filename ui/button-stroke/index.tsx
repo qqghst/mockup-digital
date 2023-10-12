@@ -18,7 +18,7 @@ const ButtonStroke: React.FC<IButtonProps> = ({
     return (
         <Link
             href={href}
-            className={styles.RequestBtn}
+            className={styles.btn}
             style={buttonStyle}>
             <span>{children}</span>
         </Link>
