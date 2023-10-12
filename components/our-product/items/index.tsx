@@ -15,14 +15,15 @@ const OurProductItem: React.FC<IOurProductItemProps> = ({
     price,
 }) => {
     const settings = {
-        infinite: true,
+        // infinite: true,
 
-        centerMode: true,
-        centerPadding: '0',
+        // centerMode: true,
+        // centerPadding: '0',
         speed: 900,
-        slidesToShow: 1,
+        slidesToShow: 1.1,
         slidesToScroll: 1,
         initialSlide: 0,
+        dots: true,
         responsive: [
             {
                 breakpoint: 768,
@@ -61,25 +62,26 @@ const OurProductItem: React.FC<IOurProductItemProps> = ({
                     <Slider {...settings}>
                         {data.map((item, index) => (
                             <div
-                                className='relative'
+                                className=''
                                 key={index}>
-                                <Image
+                                    <img src={item.img} alt="" />
+                                {/* <Image
                                     src={item.img}
                                     alt='product'
                                     width={740 / 2}
                                     height={676 / 2}
-                                />
+                                /> */}
                             </div>
                         ))}
                     </Slider>
                 </div>
                 <div>
                     <div>
-                        <div className={styles.price}>
+                        <div className={`${styles.price} -translate-y-[16px]`} >
                             <p className='px14'>{availability}</p>
                             {oldPrice ? (
-                                <div>
-                                    <span className='h4'>{oldPrice}</span>
+                                <div className='flex gap-[0.833vw] -translate-x-[0.833vw]'>
+                                    <span className='h4' style={{right: '-23px'}}>{oldPrice}</span>
                                     <span className='h4'>{price}</span>
                                 </div>
                             ) : (
@@ -87,7 +89,7 @@ const OurProductItem: React.FC<IOurProductItemProps> = ({
                             )}
                         </div>
                     </div>
-                    <div className={styles.buttons}>
+                    <div className={`${styles.buttons}`}>
                         <button>
                             <Image
                                 src='/our-product/cart.svg'

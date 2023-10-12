@@ -24,11 +24,7 @@ const OurProduct: React.FC = () => {
         slidesToShow: 3,
         slidesToScroll: 3,
         initialSlide: 0,
-        nextArrow: (
-            <div style={{}}>
-                <NextArrow />
-            </div>
-        ),
+        nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         responsive: [
             {
